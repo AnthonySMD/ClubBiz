@@ -1,0 +1,10 @@
+<h1>All Events</h1>
+
+<ul>
+	<% @events.all.each do |event| %>
+		<li><%= link_to event.name, event %> <%= link_to event.club.name, event.club %></li>
+	<% end %>
+</ul>
+</br>
+</br>
+<%= link_to "Back", main_home_path %>

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  date: 2014-05-10
+  time: 2014-05-10 15:48:18
+  max_attendees: 1
+  location: MyString
+  description: MyText
+  club_id: 1
+
+two:
+  name: MyString
+  date: 2014-05-10
+  time: 2014-05-10 15:48:18
+  max_attendees: 1
+  location: MyString
+  description: MyText
+  club_id: 1
