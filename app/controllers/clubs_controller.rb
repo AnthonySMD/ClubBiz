@@ -14,4 +14,13 @@ class ClubsController < ApplicationController
   def show
   	@club = Club.find(params[:id])
   end
+
+  def join
+    @club = Club.find(params[:id])
+    if !current_user.clubs.include?(@club)
+      current_user.clubs << @club
+    end
+    redirect_to(@club)
+  end
 end
+

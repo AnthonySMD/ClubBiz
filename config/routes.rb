@@ -1,10 +1,12 @@
 ClubBiz::Application.routes.draw do
+  get "tickets/purchase"
+  get "clubs/index"
+  get "clubs/my"
+  get "clubs/:id", to: 'clubs#show', as: :club
+  post "clubs/:id", to: 'clubs#join'
   get "events/index"
   get "events/my"
   get "events/:id", to: 'events#show', as: :event
-  get "clubs/index"
-  get "clubs/my"
-  get "clubs/:id ", to: 'clubs#show', as: :club
   devise_for :users
   get "main/landing"
   get "main/home"
