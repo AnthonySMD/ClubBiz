@@ -18,6 +18,12 @@ class EventsController < ApplicationController
 	  			@my_events << event
 	  		end
 	  	end
+    end
 	end
+  
+  def purchase_ticket
+    if @event.tickets.empty?
+    end
   end
+
 end
