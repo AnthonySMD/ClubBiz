@@ -2,9 +2,9 @@ ClubBiz::Application.routes.draw do
   get "tickets/new"
   post "tickets/new", to: 'events#show'
   get "tickets/purchase"
-  get "clubs/index"
+  resources :clubs
   get "clubs/my"
-  get "clubs/:id", to: 'clubs#show', as: :club
+  get "clubs/:id", to: 'clubs#show'
   post "clubs/:id", to: 'clubs#join'
   get "events/my"
   resources :events
