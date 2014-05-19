@@ -13,7 +13,8 @@
 <p>President: <%= @club.president %><br/>
 Email: <%= @club.email %></p>
 <!-- Events belonging to club -->
-<h3>Events</h3>
+<h3>Events</h3></br>
+<%= link_to "New Event", new_event_path %>
 <p>
 	<% @club.events.each do |event| %>
 		<%= link_to event.name, event %></br>
@@ -22,4 +23,4 @@ Email: <%= @club.email %></p>
 <br/>
 <br/>
 <!-- Links -->
-<p><%= link_to "Back to My Clubs", clubs_my_path %> <%= link_to "Back to All Clubs", clubs_index_path %></p>
+<p><%= link_to "Back to My Clubs", clubs_my_path %> </br> <%= link_to "Back to All Clubs", clubs_path %></p>

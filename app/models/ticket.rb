@@ -1,3 +1,7 @@
 class Ticket < ActiveRecord::Base
-	belongs_to :event, :user
+	
+	attr_accessor :number_tickets
+
+	belongs_to :event
+	belongs_to :user
 end
