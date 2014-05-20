@@ -2,6 +2,10 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
   def show
+<<<<<<< HEAD
+    get_free_tickets
+=======
+>>>>>>> FETCH_HEAD
   end
 
   def index
@@ -13,9 +17,11 @@ class EventsController < ApplicationController
   end
 
   def my
-  	if !user_signed_in?
+  	# Redirect if user is not signed in
+    if !user_signed_in?
   		redirect_to(main_landing_path)
   	else
+    # Collect all events from current user's clubs
 	  	my_clubs = current_user.clubs
 	  	@my_events = []
 	  	my_clubs.each do |club|
@@ -64,7 +70,32 @@ class EventsController < ApplicationController
   end
   
   def purchase_ticket
-    if @event.tickets.empty?
+    get_free_tickets
+    if !@free_tickets.empty?
+      current_user.tickets << @free_tickets.pop
+    end
+    redirect_to(@event)
+  end
+
+  def unattend
+    @event = Event.find(params[:id])
+    puts params[:id].class
+    current_user.tickets.each { |ticket| puts ticket.event_id.class }
+    
+    t = current_user.tickets.find_index {|t| t.event_id == params[:id].to_i }
+    current_user.tickets[t].user_id = nil
+    current_user.tickets[t].save
+    redirect_to(@event)
+  end
+
+  # Find free tickets
+  def get_free_tickets
+    @event = Event.find(params[:id])
+    @free_tickets = []
+    @event.tickets.each do |ticket|
+      if ticket.user_id == nil
+        @free_tickets.push(ticket)
+      end
     end
   end
 

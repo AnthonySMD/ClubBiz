@@ -1,9 +1,30 @@
 <h1><%= @event.name %></h1>
+<<<<<<< HEAD
+	<!-- Button for aquiring tickets -->
+	<% if current_user.events.include?(@event) %>
+		<em>You are attending this event.</em>
+		<%= link_to "Unattend", unattend_path(@event) %>
+	<% elsif @free_tickets.empty? %>
+    	<em>No more tickets available.</em>
+    <% else %>
+    	<%= link_to "Purchase Ticket", purchase_ticket_path(@event) %>
+    	(<%= @free_tickets.size %> left)
+    <% end %>
+	<!-- Event details -->
+	<p>Date: <%= @event.date %> Time: <%= @event.time %></br>
+=======
 	<p>Date: <%= @event.date %> </br>Time: <%= @event.time %></br>
+>>>>>>> FETCH_HEAD
 		Location: <%= @event.location %>
 	</p>
 	<p><%= @event.description %></p>
 <br/>
+<<<<<<< HEAD
+<br/>
+<!-- Back buttons -->
+<p><%= link_to "Back to My Events", events_my_path %> <%= link_to "Back to All Events", events_index_path %></p>
+=======
 <p><%= link_to "Purchase Ticket", tickets_new_path(@event) %>
 <br/></br>
 <p><%= link_to "Back to My Events", events_my_path %> </br> <%= link_to "Back to All Events", events_path %></p>
+>>>>>>> FETCH_HEAD
