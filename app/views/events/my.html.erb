@@ -1,0 +1,13 @@
+<h1>My Events</h1>
+<% if @my_events.size == 0 %>
+	<em>You have no events.</em>
+<% end %>
+<ul>
+	<% @my_events.each do |event| %>
+		<li><%= link_to event.name, event %></li>
+	<% end %>
+</ul>
+
+</br>
+</br>
+<%= link_to "Back", main_home_path %>
