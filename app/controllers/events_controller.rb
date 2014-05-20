@@ -17,6 +17,7 @@ class EventsController < ApplicationController
   end
 
   def my
+<<<<<<< HEAD
     # Redirect if user is not signed in
     if !user_signed_in?
       redirect_to(main_landing_path)
@@ -29,6 +30,20 @@ class EventsController < ApplicationController
           @my_events << event
         end
       end
+=======
+  	# Redirect if user is not signed in
+    if !user_signed_in?
+  		redirect_to(main_landing_path)
+  	else
+    # Collect all events from current user's clubs
+	  	my_clubs = current_user.clubs
+	  	@my_events = []
+	  	my_clubs.each do |club|
+	  		club.events.each do |event|
+	  			@my_events << event
+	  		end
+	  	end
+>>>>>>> 30d7c386f0aa9c570f8413e21c7d6acdc408eaa8
     end
   end
 

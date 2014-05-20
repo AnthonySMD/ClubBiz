@@ -5,4 +5,5 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_and_belongs_to_many :clubs
   has_many :tickets
+  has_many :events, through: :tickets
 end
