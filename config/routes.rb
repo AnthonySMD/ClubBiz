@@ -1,5 +1,4 @@
 ClubBiz::Application.routes.draw do
-  get "tickets/purchase"
   get "clubs/index"
   get "clubs/my"
   get "clubs/:id", to: 'clubs#show', as: :club
@@ -7,6 +6,8 @@ ClubBiz::Application.routes.draw do
   get "events/index"
   get "events/my"
   get "events/:id", to: 'events#show', as: :event
+  get "events/:id/purchase_ticket", to: 'events#purchase_ticket', as: :purchase_ticket
+  get "events/:id/unattend", to: 'events#unattend', as: :unattend
   devise_for :users
   get "main/landing"
   get "main/home"
