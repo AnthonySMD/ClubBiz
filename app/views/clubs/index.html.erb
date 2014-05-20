@@ -1,7 +1,7 @@
 <h1>All Clubs</h1>
 
 <ul>
-	<% @clubs.all.each do |club| %>
+	<% @clubs.each do |club| %>
 		<li><%= link_to club.name, club %></li>
 	<% end %>
 </ul>

@@ -1,26 +1,22 @@
 ClubBiz::Application.routes.draw do
-<<<<<<< HEAD
   get "clubs/index"
-=======
   get "tickets/new"
   post "tickets/new", to: 'events#show'
   get "tickets/purchase"
-  resources :clubs
->>>>>>> FETCH_HEAD
   get "clubs/my"
-  get "clubs/:id", to: 'clubs#show'
+  resources :clubs
+  #get "clubs/:id", to: 'clubs#show'
   post "clubs/:id", to: 'clubs#join'
   get "events/my"
-<<<<<<< HEAD
-  get "events/:id", to: 'events#show', as: :event
+  resources :events
+  #get "events/:id", to: 'events#show', as: :event
   get "events/:id/purchase_ticket", to: 'events#purchase_ticket', as: :purchase_ticket
   get "events/:id/unattend", to: 'events#unattend', as: :unattend
-=======
-  resources :events
->>>>>>> FETCH_HEAD
   devise_for :users
   get "main/landing"
   get "main/home"
+ 
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -3,7 +3,7 @@
 	<em>You have no clubs.</em>
 <% end %>
 <ul>
-	<% @my_clubs.all.each do |club| %>
+	<% @my_clubs.each do |club| %>
 		<li><%= link_to club.name, club %></li>
 	<% end %>
 </ul>
