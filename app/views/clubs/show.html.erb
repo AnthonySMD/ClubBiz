@@ -2,19 +2,22 @@
 <!-- Check whether club has been joined -->
 <% if current_user.clubs.include?(@club) %>
 	<p>
-		<em>Joined</em>
+		<em>You have admin privileges for this club</em><br/>
+		<%= link_to "Grant other users admin privileges for this club", users_path(:id => @club.id) %>
 	</p>
-<!-- Link to join button if not joined -->
-<% else %>
-	<p><%= link_to "Join", @club, :method => :join %></p>
 <% end %>
 <!-- Club details -->
 <p><%= @club.description %></p>
 <p>President: <%= @club.president %><br/>
 Email: <%= @club.email %></p>
+<% if current_user.clubs.include?(@club) %>
+  <%= link_to "Edit Details", edit_club_path%><br/>
+<% end %>
 <!-- Events belonging to club -->
 <h3>Events</h3></br>
-<%= link_to "New Event", new_event_path %>
+<% if current_user.clubs.include?(@club) %>
+  <%= link_to "New Event", new_event_path %>
+<% end %>
 <p>
 	<% @club.events.each do |event| %>
 		<%= link_to event.name, event %></br>

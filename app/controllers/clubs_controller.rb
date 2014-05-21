@@ -33,13 +33,7 @@ class ClubsController < ApplicationController
       if !user_signed_in?
         redirect_to(main_landing_path)
       else
-        my_clubs = current_user.clubs
-        @my_clubs = []
-        my_clubs.each do |club|
-          club.clubs.each do |club|
-            @my_clubs << club
-          end
-        end
+        @my_clubs = current_user.clubs
       end
     end
 
@@ -58,11 +52,15 @@ class ClubsController < ApplicationController
           format.json { render json: @club.errors, status: :unprocessable_entity }
         end
       end
+
+       if !current_user.clubs.include?(@club)
+        current_user.clubs << @club
+      end
     end
 
     def update
       respond_to do |format|
-        if @club.update(tweet_params)
+        if @club.update(club_params)
           format.html { redirect_to @club, notice: 'Club was successfully updated.' }
           format.json { head :no_content }
         else

@@ -1,0 +1,18 @@
+<h1>All Users</h1>
+
+<ul>
+  <% @users.each do |user| %>
+    <li><%= user.first_name %></li>
+    <li><%= user.last_name %></li>
+    <li><%= user.email %></li>
+    <% if !user.clubs.include?(@club) %>
+      <%= link_to "Grant this user admin privileges", users_add_admin_path(:club_id => @club.id, :user_id => user.id) %></br>
+    <% else %>
+      <em>This user already has admin privileges</em></br>
+    <% end %>
+</br>
+  <% end %>
+</ul>
+</br>
+</br>
+<%= link_to "Back", main_home_path %>

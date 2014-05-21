@@ -13,6 +13,8 @@ ClubBiz::Application.routes.draw do
   get "events/:id/purchase_ticket", to: 'events#purchase_ticket', as: :purchase_ticket
   get "events/:id/unattend", to: 'events#unattend', as: :unattend
   devise_for :users
+  resources :users, only: [:index]
+  get "users/add_admin"
   get "main/landing"
   get "main/home"
  

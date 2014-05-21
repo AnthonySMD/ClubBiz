@@ -1,6 +1,8 @@
 <h1>My Clubs</h1>
 <% if @my_clubs.size == 0 %>
 	<em>You have no clubs.</em>
+<% else %>
+    <em>You have admin privileges for the following clubs.</em></br></br>
 <% end %>
 <ul>
 	<% @my_clubs.each do |club| %>
