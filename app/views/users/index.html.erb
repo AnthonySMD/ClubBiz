@@ -8,7 +8,7 @@
     <% if !user.clubs.include?(@club) %>
       <%= link_to "Grant this user admin privileges", users_add_admin_path(:club_id => @club.id, :user_id => user.id) %></br>
     <% else %>
-      <em>This user already has admin privileges</em></br>
+      <em>This user already has admin privileges</em></br> 
     <% end %>
 </br>
   <% end %>
