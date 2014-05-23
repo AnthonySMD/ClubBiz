@@ -10,6 +10,7 @@ class EventsController < ApplicationController
   end
 
   def new
+    @club = Club.find(params[:club_id])
     @event = Event.new
   end
 
@@ -30,10 +31,13 @@ class EventsController < ApplicationController
 	end
 
   def edit
+    @club = Club.find(params[:club_id])
   end
 
   def create
+    @club = Club.find(event_params[:club_id])
     @event = Event.new(event_params)
+    @event.club = @club
 
     respond_to do |format|
       if @event.save
@@ -43,12 +47,12 @@ class EventsController < ApplicationController
         format.html { render action: 'new' }
         format.json { render json: @event.errors, status: :unprocessable_entity }
       end
-    end
+    end    
   end
 
   def update
     respond_to do |format|
-      if @event.update(tweet_params)
+      if @event.update(event_params)
         format.html { redirect_to @event, notice: 'Event was successfully updated.' }
         format.json { head :no_content }
       else
@@ -104,7 +108,7 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:name, :date, :time, :maximum_attendees, :location, :description)
+      params.require(:event).permit(:name, :date, :time, :maximum_attendees, :location, :description, :club_id)
     end
 
 end

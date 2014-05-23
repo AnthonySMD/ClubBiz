@@ -8,6 +8,9 @@
     <% else %>
     	<%= link_to "Purchase Ticket", purchase_ticket_path(@event) %>
     	(<%= @free_tickets.size %> left)
+    <% end %></br>
+    <% if current_user.clubs.include?(@event.club) %>
+        <%= link_to "Edit Details", edit_event_path(:club_id => @event.club.id) %>
     <% end %>
 	<!-- Event details -->
 	<p>Date: <%= @event.date %> </br>Time: <%= @event.time %></br>

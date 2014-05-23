@@ -16,7 +16,7 @@ Email: <%= @club.email %></p>
 <!-- Events belonging to club -->
 <h3>Events</h3></br>
 <% if current_user.clubs.include?(@club) %>
-  <%= link_to "New Event", new_event_path %>
+  <%= link_to "New Event", new_event_path(:club_id => @club.id) %></br>
 <% end %>
 <p>
 	<% @club.events.each do |event| %>

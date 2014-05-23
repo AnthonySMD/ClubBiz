@@ -4,6 +4,7 @@ ClubBiz::Application.routes.draw do
   post "tickets/new", to: 'events#show'
   get "tickets/purchase"
   get "clubs/my"
+  get "clubs/add_office_holder"
   resources :clubs
   #get "clubs/:id", to: 'clubs#show'
   post "clubs/:id", to: 'clubs#join'
